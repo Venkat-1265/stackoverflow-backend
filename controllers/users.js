@@ -63,7 +63,7 @@ const emailSender =  async (email) => {
       .replace(/=+$/g, ''); // Remove trailing '='
   }
   const token=jwt.sign({email},process.env.JWT_SECRET,{expiresIn:'5m'})
-  const resetLink=`http://localhost:3000/resetPassword/${encodeURIComponent(base64urlEncode(token))}`
+  const resetLink=`${process.env.FRONTEND_URL}/resetPassword/${encodeURIComponent(base64urlEncode(token))}`
   try {
     const mailOptions={
       from: '"Stackoverflow Clone" <venkat39865@gmail.com>', // sender address
